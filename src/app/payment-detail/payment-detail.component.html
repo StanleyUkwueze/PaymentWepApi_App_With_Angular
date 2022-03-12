@@ -1,0 +1,33 @@
+<div class="jumbotron bg-secondary my-3">
+  <h1 class="display-4 text-center text-primary">Payment Detail Register</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <app-payment-detail-form></app-payment-detail-form>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Card Owner</th>
+                    <th>Card Number</th>
+                    <th>Exp.Date</th>
+                    <th>Security Code</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor = "let detail of  service.listOfPaymentDetails">
+                    <td (click) ="populateForm(detail)">{{detail.cardOwnerName}}</td>
+                    <td (click) ="populateForm(detail)">{{detail.cardNumber}}</td>
+                    <td>{{detail.cardExpirationDate}}</td>
+                    <td>
+                        <i class="fa fa-trash-alt fa-lg text-danger" (click) ="onDelete(detail.paymentDetailId)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
